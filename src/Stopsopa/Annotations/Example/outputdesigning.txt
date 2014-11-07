@@ -1,0 +1,136 @@
+/**
+  @return   integer   Komentarz do tego
+  @Enum(
+       "sam string",
+       value = {
+           1,
+           2
+       },
+       literal = {
+           1 : "ONE",
+           2 : "TWO",
+           3 : "THREE"
+       }
+  )
+ */
+{
+    t : 't', // annotacja // -
+    n: 'Enum',  // -
+    tp : 'integer', // jeœli typ jest znany  [or]
+    u: 'string[]|callable[]', // jeœli typ jest nieznany    [or]
+    a: true // jeœli typ array
+    c: 'Komentarz do tego'
+}
+{
+    t : 't', // annotacja
+    n: 'Enum',
+    d: {
+        t : 'l', // lista -  "sam string",value = {1,2},literal = {1 : "ONE",2 : "TWO",3 : "THREE"}
+        l : [ // czêœci listowana // "sam string"
+            {
+                t: true, // true - typ prosty
+                d : "sam string"
+            }
+        ]    
+        d : { // czêœæ asocjacyjna - value = {1,2},literal = {1 : "ONE",2 : "TWO",3 : "THREE"}
+            'value' : {
+                t : 'a', // array NIE assoc - {1,2}
+                d : [
+                    {   
+                        t: true,
+                        d: 1
+                    },
+                    {
+                        t: true,
+                        d: 2
+                    }
+                ]
+            },
+            'literal' : {
+                t : 's', // lista asocjacyjna prosta, {1 : "ONE",2 : "TWO",3 : "THREE"}
+                d : {
+                    '1' : {
+                        t : true,
+                        d : "ONE"                        
+                    },
+                    '2' : {
+                        t : true,
+                        d : "TWO"                        
+                    },
+                    '3' : {
+                        t : true,
+                        d : "THREE"                        
+                    }
+                }
+            }
+        }
+    }
+    
+}
+/**
+ * @Enum(
+ *      value = {
+ *          1,
+ *          @DummyJoinColumn(name="col3", referencedColumnName="col4")
+ *      },
+ *      literal = {
+ *          1 : "aONE",
+ *          2 : "aTWO",
+ *          3 : "aTHREE"
+ *      }
+ * )
+ */
+{
+    t: 't',
+    n: 'Enum',
+    d: {
+        t: 'l',
+        l: [],
+        d: {
+            'value' : {
+                t: 'a',
+                d: [
+                    {
+                        t: true,
+                        d: 1
+                    },
+                    {
+                        t: 't',
+                        n: 'DummyJoinColumn',
+                        d: {
+                            t: 'l',
+                            l: [],
+                            d: {
+                                'name' : {
+                                    t: true,
+                                    d: 'col3'
+                                },
+                                'referencedColumnName' : {
+                                    t: true,
+                                    d: 'col4'
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            'literal' : { // lista asocjacyjna prosta
+                t: 's',
+                d: {
+                    '1' : {
+                        t: true,
+                        'aONE'
+                    },
+                    '2' : {
+                        t: true,
+                        'aTWO'
+                    }
+                    '3' : {
+                        t: true,
+                        'aTHREE'
+                    }
+                }
+            }
+        }
+    }    
+}
