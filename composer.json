@@ -1,0 +1,15 @@
+{
+    "name": "stopsopa/annotations",
+    "description": "Complete annotations parser with flexible cache system",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Szymon Działowski",
+            "email": "szymon.dzialowski@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": { "Stopsopa\\Annotations": "src/" }
+    },
+    "require": {}
+}
