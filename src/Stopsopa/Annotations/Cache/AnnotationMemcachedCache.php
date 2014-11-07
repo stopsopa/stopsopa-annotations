@@ -3,6 +3,9 @@
 namespace Stopsopa\Annotations\Cache;
 use Exception;
 
+/**
+ * Stopsopa\Annotations\Cache\AnnotationMemcachedCache
+ */
 class AnnotationMemcachedCache extends AbstractAnnotationCache {
     protected $hash;
     public function __construct($hash) {

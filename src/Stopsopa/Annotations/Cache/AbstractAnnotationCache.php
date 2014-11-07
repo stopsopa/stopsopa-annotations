@@ -2,6 +2,9 @@
 
 namespace Stopsopa\Annotations\Cache;
 
+/**
+ * Stopsopa\Annotations\Cache\AbstractAnnotationCache
+ */
 abstract class AbstractAnnotationCache { 
     protected $data;
     protected $save;
