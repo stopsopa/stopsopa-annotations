@@ -5,7 +5,7 @@ Standalone, lightweight annotation parser for php with build in cache system bas
 
   - filesystem
   - Memcached
-  - Apc (Not required)
+  - Apc (Deprecated technology)
 
 
 ***
