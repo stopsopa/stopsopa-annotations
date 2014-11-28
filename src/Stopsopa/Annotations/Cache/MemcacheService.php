@@ -17,7 +17,11 @@ class MemcacheService {
     public static function addServer($host, $port = 11211) {
         static::_init();
         static::$m->addServer($host, $port);
-    }    
+    }  
+    public static function flush() {
+        static::_init();
+        static::$m->flush();
+    }  
     /**
      * @return Memcache
      */
