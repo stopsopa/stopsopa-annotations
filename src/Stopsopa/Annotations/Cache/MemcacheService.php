@@ -26,6 +26,7 @@ class MemcacheService {
      * @return Memcache
      */
     public static function getMemcache() {
+        static::_init();
         return static::$m;
     }
 }
