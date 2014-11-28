@@ -72,7 +72,7 @@ Library is available in composer through packagist.org (https://packagist.org/pa
 ### Memcached cache
 
     use Stopsopa\Annotations\AnnotationParser;
-    use Stopsopa\Annotations\Cache\MemcacheService;
+    use Stopsopa\Annotations\Cache\MemcacheSe rvice;
     use Stopsopa\Annotations\Cache\AnnotationMemcachedCache;
     use Stopsopa\Annotations\Example\TestClass; 
 
@@ -82,12 +82,12 @@ Library is available in composer through packagist.org (https://packagist.org/pa
     $salt = 'kdjdjdjk'; // project salt
     $key  = 'stopsopaannotationcache';
     $mkey = md5($salt).'-'.$key;
-    MemcacheService::addServer('localhost', 11211); 
+    MemcacheSer vice::addServer('localhost', 11211); 
     
-    $cache = MemcacheService::getInstance()->get($mkey);
+    $cache = Memcac heService::getInstance()->get($mkey);
     
     if (!$cache) 
-        MemcacheService::getInstance()->set($mkey, $cache = new AnnotationMemcachedCache($mkey));    
+        MemcacheS ervice::getInstance()->set($mkey, $cache = new AnnotationMemcachedCache($mkey));    
     
     //    $cache->clear(); // you can clear all cache 
     $parser->setCache($cache);

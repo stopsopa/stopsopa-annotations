@@ -10,8 +10,11 @@ class MemcacheService {
      * @var Memcache 
      */
     protected static $m;
-    protected static function getInstance() {
-        static::$m or (static::$m = new Memcache());          
+    protected function __construct() {}
+    public static function getInstance() {
+        if (!static::$m) {
+            static::$m = new Memcache();
+        }        
         return static::$m;
     }
     public static function addServer($host, $port = 11211) {

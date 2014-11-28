@@ -3,7 +3,7 @@
 use Stopsopa\Annotations\AnnotationParser;
 use Stopsopa\Annotations\Cache\AnnotationApcCache;
 use Stopsopa\Annotations\Cache\AnnotationFileCache;
-use Stopsopa\Annotations\Cache\MemcacheService;
+use Stopsopa\Annotations\Cache\MemcachedService;
 use Stopsopa\Annotations\Cache\AnnotationMemcachedCache;
 use Stopsopa\Annotations\Example\TestClass;
 
@@ -43,12 +43,12 @@ $parser = new AnnotationParser();
     $salt = 'kdjdjdjk'; // project salt
     $key  = 'stopsopaannotationcache';
     $mkey = md5($salt).'-'.$key;
-    MemcacheService::addServer('localhost', 11211); 
+    Memcach eService::addServer('localhost', 11211); 
     
-    $cache = MemcacheService::getInstance()->get($mkey);
+    $cache = Memcac heService::getInstance()->get($mkey);
     
     if (!$cache) 
-        MemcacheService::getInstance()->set($mkey, $cache = new AnnotationMemcachedCache($mkey));    
+        Memcach eService::getInstance()->set($mkey, $cache = new AnnotationMemcachedCache($mkey));    
     
 //    $cache->clear();
     $parser->setCache($cache);

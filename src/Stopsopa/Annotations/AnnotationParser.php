@@ -43,10 +43,12 @@ class AnnotationParser {
             throw new AnnotationException("Unknown classname in ReflectionClass");
 
         if ($this->cachenamespaceclass === $name)
-            return $this->cacheclass;             
+            return $this->cacheclass; 
+        
+//        niechginiee(!!$this->_getFromCache($name));
         
         if ($data = $this->_getFromCache($name)) 
-            return $data;
+            return $data;        
         
         return $this->_saveInCache($name, $this->_getAnnotations($class));                 
     }
@@ -642,18 +644,18 @@ class AnnotationParser {
     protected $cacheclass;
     protected $cachenamespaceclass;
     protected function _getFromCache($namespace) {
-        
         if ($this->cache) 
-            return $this->cache->get($namespace);           
+            return $this->cache->get($namespace);  
         
         return null;
     }
-    protected function &_saveInCache($namespace, &$data) {
+    protected function &_saveInCache($namespace, $data) {
         $this->cachenamespaceclass = $namespace;
         $this->cacheclass          = $data; 
         
-        if ($this->cache) 
-            $this->cache->set($namespace, $data);        
+        if ($this->cache) {
+            $this->cache->set($namespace, $data); 
+        }
         
         return $data;
     }
