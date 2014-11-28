@@ -125,7 +125,7 @@ class AnnotationParser {
         $t = array();
         while (is_string($this->_getChar())) {
             $a = array();
-            $a = $this->_parse();
+            $a = $this->_parse($a);
             
             if (count($a)) 
                 $t[] = $a;  

@@ -10,23 +10,14 @@ class MemcacheService {
      * @var Memcache 
      */
     protected static $m;
-    protected static function _init() {
-        if (!static::$m) 
-            static::$m = new Memcache();        
-    }
-    public static function addServer($host, $port = 11211) {
-        static::_init();
-        static::$m->addServer($host, $port);
-    }  
-    public static function flush() {
-        static::_init();
-        static::$m->flush();
-    }  
-    /**
-     * @return Memcache
-     */
-    public static function getMemcache() {
-        static::_init();
+    protected static function getInstance() {
+        static::$m or (static::$m = new Memcache());          
         return static::$m;
     }
+    public static function addServer($host, $port = 11211) {
+        static::getInstance()->addServer($host, $port);
+    }  
+    public static function flush() {
+        static::getInstance()->flush();
+    }  
 }

@@ -45,10 +45,10 @@ $parser = new AnnotationParser();
     $mkey = md5($salt).'-'.$key;
     MemcacheService::addServer('localhost', 11211); 
     
-    $cache = MemcacheService::getMemcache()->get($mkey);
+    $cache = MemcacheService::getInstance()->get($mkey);
     
     if (!$cache) 
-        MemcacheService::getMemcache()->set($mkey, $cache = new AnnotationMemcachedCache($mkey));    
+        MemcacheService::getInstance()->set($mkey, $cache = new AnnotationMemcachedCache($mkey));    
     
 //    $cache->clear();
     $parser->setCache($cache);

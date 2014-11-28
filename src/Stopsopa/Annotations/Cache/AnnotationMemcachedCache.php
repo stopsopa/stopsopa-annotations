@@ -14,7 +14,7 @@ class AnnotationMemcachedCache extends AbstractAnnotationCache {
     public function __destruct() {
         if ($this->save) {
             $this->save = false;
-            MemcacheService::getMemcache()->set($this->hash, $this);            
+            MemcacheService::getInstance()->set($this->hash, $this);            
         }
     }
 }
