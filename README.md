@@ -1,3 +1,7 @@
+# DEPRECATED
+Created in 2014 - quite old now and not maintained.
+
+C'mon, I was young. Don't judge me ;P
 
 <h1>stopsopa/annotations</h1>
 
